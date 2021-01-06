@@ -153,8 +153,8 @@ echo "alias reboot-quick='systemctl kexec'" >> /root/.bash_profile
 systemctl disable rpcbind
 systemctl stop rpcbind
 
-## Set Timezone to UTC and enable NTP
-timedatectl set-timezone UTC
+## Set Timezone to MEZ and enable NTP
+timedatectl set-timezone MEZ
 cat <<EOF > /etc/systemd/timesyncd.conf
 [Time]
 NTP=0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
@@ -241,13 +241,22 @@ fi
 if [ -z "${NO_MOTD_BANNER}" ] ; then
   if ! grep -q https "/etc/motd" ; then
     cat << 'EOF' > /etc/motd.new
-	   This system is optimised by:            https://eXtremeSHOK.com
-	     __   ___                            _____ _    _  ____  _  __
-	     \ \ / / |                          / ____| |  | |/ __ \| |/ /
-	  ___ \ V /| |_ _ __ ___ _ __ ___   ___| (___ | |__| | |  | | ' /
-	 / _ \ > < | __| '__/ _ \ '_ ` _ \ / _ \\___ \|  __  | |  | |  <
-	|  __// . \| |_| | |  __/ | | | | |  __/____) | |  | | |__| | . \
-	 \___/_/ \_\\__|_|  \___|_| |_| |_|\___|_____/|_|  |_|\____/|_|\_\
+	   This system is optimised by:            AgilityTime
+
+
+ $$$$$$\            $$\ $$\ $$\   $$\            $$$$$$$$\ $$\                         
+$$  __$$\           \__|$$ |\__|  $$ |           \__$$  __|\__|                        
+$$ /  $$ | $$$$$$\  $$\ $$ |$$\ $$$$$$\   $$\   $$\ $$ |   $$\ $$$$$$\$$$$\   $$$$$$\  
+$$$$$$$$ |$$  __$$\ $$ |$$ |$$ |\_$$  _|  $$ |  $$ |$$ |   $$ |$$  _$$  _$$\ $$  __$$\ 
+$$  __$$ |$$ /  $$ |$$ |$$ |$$ |  $$ |    $$ |  $$ |$$ |   $$ |$$ / $$ / $$ |$$$$$$$$ |
+$$ |  $$ |$$ |  $$ |$$ |$$ |$$ |  $$ |$$\ $$ |  $$ |$$ |   $$ |$$ | $$ | $$ |$$   ____|
+$$ |  $$ |\$$$$$$$ |$$ |$$ |$$ |  \$$$$  |\$$$$$$$ |$$ |   $$ |$$ | $$ | $$ |\$$$$$$$\ 
+\__|  \__| \____$$ |\__|\__|\__|   \____/  \____$$ |\__|   \__|\__| \__| \__| \_______|
+          $$\   $$ |                      $$\   $$ |                                   
+          \$$$$$$  |                      \$$$$$$  |                                   
+           \______/                        \______/                                    
+
+
 
 
 EOF
